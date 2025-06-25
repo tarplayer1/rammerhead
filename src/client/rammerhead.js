@@ -484,25 +484,3 @@
     }
 })();
 
-const hideUI = () => {
-    const tabsBar = document.querySelector('.chrome-tabs-993769');
-    if (tabsBar) tabsBar.style.display = 'none';
-    const browserBar = document.querySelector('.browser-bar-449466');
-    if (browserBar) browserBar.style.display = 'none';
-  };
-  hideUI();
-  const observer = new MutationObserver(hideUI);
-  observer.observe(document.body, { childList: true, subtree: true });
-
-  // Auto-type discord.com and open it
-  setTimeout(() => {
-    const input = document.querySelector('input[type="text"]');
-    if (!input) return console.warn('Input not found');
-    input.value = "discord.com";
-    input.dispatchEvent(new Event('input', { bubbles: true }));
-
-    const span = Array.from(document.querySelectorAll('span'))
-      .find(el => el.textContent.trim().toLowerCase() === 'open in-browser');
-    if (!span) return console.warn('"Open in-browser" span not found');
-    span.click();
-  }, 300);
